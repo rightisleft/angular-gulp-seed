@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var jshint = require('gulp-jshint');
 var jscs = require('gulp-jscs');
 var jsfiles = ['*.js', 'src/**/*.js'];
+var concat = require('gulp-concat');
 
 var wiredep = require('wiredep').stream;
 var nodemon = require('gulp-nodemon');
@@ -13,6 +14,16 @@ gulp.task('style', function () {
             verbose: true
         }))
         .pipe(jscs());
+});
+
+gulp.task('scripts', function() {
+    return gulp.src(['src/index.js', 'src/app/**/*.js'])
+        .pipe(concat('app.js'))
+        .pipe(gulp.dest('public/js'));
+});
+
+gulp.task('watch', ['scripts'], function() {
+    gulp.watch('src/app/**/*.js', ['scripts']);
 });
 
 gulp.task('inject', function() {
@@ -36,7 +47,7 @@ gulp.task('inject', function() {
     return src;
 });
 
-gulp.task('serve', ['style', 'inject'], function() {
+gulp.task('serve', ['style', 'inject', 'watch'], function() {
     var options = {
         script: 'app.js',
         delayTime: 1,
