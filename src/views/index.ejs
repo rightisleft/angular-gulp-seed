@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="vanilla">
+  <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.css">
+    <title>Jacks Test Playground</title>
+    <!-- bower:js -->
+    <script src="lib/jquery/dist/jquery.js"></script>
+    <script src="lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="lib/angular/angular.js"></script>
+    <!-- endbower -->
+
+    <!-- bower:css -->
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.min.css" />
+    <!-- endbower -->
+
+    <!-- inject:js -->
+    <script src="/js/main.js"></script>
+    <!-- endinject -->
+
+    <!-- inject:css -->
+    <link rel="stylesheet" href="/css/main.css">
+    <!-- endinject -->
+  </head>
+  <body>
+    <!-- This page uses EJS -->
+    <!-- This page uses AngularJS 1.x -->
+    <div class="container">
+      <h1>Jacks Test Playground</h1>
+
+      <section id="main" class="container">
+        <h1>Scoped Area</h1>
+        <h2>Test: <%= list.length %></h2>
+        <% for(var i=0; i < list.length; i++){ %>
+          <li>Test: <%= list[i] %></li>
+        <%}%>
+      </section>
+    </div>
+  </body>
+</html>
