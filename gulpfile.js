@@ -24,6 +24,7 @@ gulp.task('scripts', function() {
 
 gulp.task('watch', ['scripts'], function() {
     gulp.watch('src/app/**/*.js', ['scripts']);
+    gulp.watch('src/index.js', ['scripts']);
 });
 
 gulp.task('inject', function() {
