@@ -8,10 +8,8 @@ angular.module('app', [
     'ui.bootstrap',
     ])
 .config(function($stateProvider, $urlRouterProvider) {
-    //
     // For any unmatched url, redirect to /state1
-    console.log('config');
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/home');
     //
     // Now set up the states
     $stateProvider
@@ -25,8 +23,21 @@ angular.module('app').controller('HomeController', function($scope) {
     console.log('HomeController');
 });
 
-console.log('home');
-console.log('Main.js');
+angular.module('app')
+    .config(function ($stateProvider) {
+        $stateProvider
+            .state('home', {
+                url: '/home',
+                parent: 'app',
+                abstract: true,
+                template: '<ui-view/>'
+            })
+            .state('home.index', {
+                url: '',
+                templateUrl: 'home/home.html',
+                controller: 'HomeController'
+            });
+    });
 
 angular.module('app').controller('GremlinController', function ($http, $scope) {
     console.log('GremlinController');
